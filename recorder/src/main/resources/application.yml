@@ -1,0 +1,22 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/record?serverTimezone=UTC
+    username: root
+    password: 123456
+  jpa:
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+  mvc:
+    static-path-pattern: /**                        #这个配置是默认配置
+  http: #这里是访问项目外文件夹的关键
+    multipart:
+      locations: D:/
+  resources:
+    static-locations: classpath:/META-INF/resources/,classpath:/resources/, classpath:/static/, classpath:/public/, file:${spring.http.multipart.locations}        #需要把自定义的路径添加到static-locations后面,原本的静态访问路径也要加上不然原本的静态资源会访问不到。
+
+
+server:
+  port: 8181
